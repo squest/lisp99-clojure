@@ -15,3 +15,13 @@
     (if (= n i)
       [res (vec c)]
       (recur (inc i) xs (conj res x)))))
+
+(defn partition' [n col]
+  (loop [i 1 [x & xs :as c] col res [] resi []]
+    (if (empty? c)
+      (if (= n (count resi))
+        (conj res resi)
+        res)
+      (if (= i n)
+        (recur 1 xs (conj res (conj resi x)) [])
+        (recur (inc i) xs res (conj resi x))))))

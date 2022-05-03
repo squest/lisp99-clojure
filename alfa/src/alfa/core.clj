@@ -54,6 +54,15 @@
        sort
        last))
 
+(defn factors-loop [p]
+  (loop [i 1 res []]
+    (if (> i p)
+      res
+      (if (= 0 (rem p i))
+        (recur (inc i) (conj res i))
+        (recur (inc i) res)))))
+
+
 
 
 
